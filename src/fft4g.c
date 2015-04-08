@@ -1,3 +1,13 @@
+/* FFT library adopted from http://www.kurims.kyoto-u.ac.jp/~ooura/fft.html
+ 
+ Original copyright:
+ Copyright(C) 1996-2001 Takuya OOURA
+ email: ooura@mmm.t.u-tokyo.ac.jp
+ download: http://momonga.t.u-tokyo.ac.jp/~ooura/fft.html
+ You may use, copy, modify this code for any purpose and
+ without fee. You may distribute this ORIGINAL package.
+ */
+
 
 #include "fft4g.h"
 void cdft(int n, int isgn, float *a, int *ip, float *w)
