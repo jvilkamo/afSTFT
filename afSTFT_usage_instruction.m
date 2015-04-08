@@ -1,4 +1,11 @@
 function afSTFT_usage_instruction
+% Example script for applying the afSTFT library
+% - The first part shows how to apply it in a "single shot" mode
+% - The second part shows how to apply it in a continuous mode
+%
+% Juha Vilkamo
+% e-mail: juha.vilkamo@aalto.fi
+%
 
 % Init parameters and make input data
 inChannels=2;
