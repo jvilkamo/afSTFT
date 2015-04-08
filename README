@@ -1,0 +1,6 @@
+Alias-free short-time Fourier transform – a robust time-frequency transform for audio processing
+
+- use compile_afSTFT_mex.m to compile a Matlab MEX file, or use the precompiled MEX files.
+- find Matlab usage example in afSTFT_usage_instruction.m
+
+(document yet tbd)
