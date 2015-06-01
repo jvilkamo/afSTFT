@@ -69,6 +69,9 @@ typedef struct{
 
 } afHybrid;
 
+
+/* Call these */
+
 void afSTFTinit(void** handle, int hopSize, int inChannels, int outChannels, int LDmode, int hybridMode);
 
 void afSTFTforward(void* handle, float** inTD, complexVector* outFD);
@@ -76,6 +79,9 @@ void afSTFTforward(void* handle, float** inTD, complexVector* outFD);
 void afSTFTinverse(void* handle, complexVector* inFD, float** outTD);
 
 void afSTFTfree(void* handle);
+
+
+/* Internal functions */
 
 void afHybridInit(void** handle, int hopSize, int inChannels, int outChannels);
 
