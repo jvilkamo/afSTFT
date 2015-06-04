@@ -107,7 +107,7 @@ void vtRunFFT(void* planPr, int positiveForForwardTransform)
         vDSP_ztoc(&(h->VDSP_split),1, (DSPComplex*)h->timeData, 2, (h->N)/2);
     }
 #else
-    
+    /* Note (A): The phase is conjugated below for Ooura's FFT to produce the same output than that of the vDSP FFT. */
     int k;
     if (positiveForForwardTransform > 0) //
     {
@@ -116,16 +116,18 @@ void vtRunFFT(void* planPr, int positiveForForwardTransform)
         for (k=0;k<(h->N)/2;k++)
         {
             h->frequencyData[k] = h->a[2*k];
-            h->frequencyData[k+(h->N)/2] = h->a[2*k+1];
+            h->frequencyData[k+(h->N)/2] = - h->a[2*k+1]; /* Check note (A) above */
         }
+        h->frequencyData[(h->N)/2] *= -1.0f; /* Check note (A) above */
     }
     else //
     {
         for (k=0;k<(h->N)/2;k++)
         {
             h->a[2*k] = 4.0f*h->frequencyData[k];
-            h->a[2*k+1] = 4.0f*h->frequencyData[k+(h->N)/2];
+            h->a[2*k+1] = -4.0f*h->frequencyData[k+(h->N)/2]; /* Check note (A) above */
         }
+        h->a[(h->N)/2] *= -1.0f; /* Check note (A) above */
         rdft(h->N, -1, h->a, h->ip, h->w);
         memcpy(h->timeData,h->a,sizeof(float)*h->N);
     }

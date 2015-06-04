@@ -16,15 +16,15 @@ function compile_afSTFT_mex
 try
     mex src/afSTFT_mex.c src/afSTFTlib.c src/vecTools.c src/fft4g.c -Isrc COPTIMFLAGS='-O3 -DNDEBUG' -output afSTFT
 catch % Windows compiler fix (not maybe most elegant, but worked..)
-    system('copy src/afSTFT_mex.c afSTFT_mex.cpp');
-    system('copy src/afSTFTlib.c afSTFTlib.cpp');
-    system('copy src/vecTools.c vecTools.cpp');
-    system('copy src/fft4g.c fft4g.cpp');
+    copyfile('src/afSTFT_mex.c','afSTFT_mex.cpp');
+    copyfile('src/afSTFTlib.c','afSTFTlib.cpp');
+    copyfile('src/vecTools.c','vecTools.cpp');
+    copyfile('src/fft4g.c','fft4g.cpp');
     mex afSTFT_mex.cpp afSTFTlib.cpp vecTools.cpp fft4g.cpp -Isrc COPTIMFLAGS='-O3 -DNDEBUG' -output afSTFT
-    system('del afSTFT_mex.cpp');
-    system('del afSTFTlib.cpp');
-    system('del vecTools.cpp');
-    system('del fft4g.cpp');
+    delete('afSTFT_mex.cpp');
+    delete('afSTFTlib.cpp');
+    delete('vecTools.cpp');
+    delete('fft4g.cpp');
 end
 inFrame=randn(1280,40);
 
