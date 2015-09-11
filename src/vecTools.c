@@ -127,7 +127,7 @@ void vtRunFFT(void* planPr, int positiveForForwardTransform)
             h->a[2*k] = 4.0f*h->frequencyData[k];
             h->a[2*k+1] = -4.0f*h->frequencyData[k+(h->N)/2]; /* Check note (A) above */
         }
-        h->a[(h->N)/2] *= -1.0f; /* Check note (A) above */
+        h->a[1] *= -1.0f; /* Check note (A) above */
         rdft(h->N, -1, h->a, h->ip, h->w);
         memcpy(h->timeData,h->a,sizeof(float)*h->N);
     }
